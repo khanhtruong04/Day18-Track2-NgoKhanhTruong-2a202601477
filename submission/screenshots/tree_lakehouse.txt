@@ -1,0 +1,153 @@
+tree -L 3 --du -h --filelimit 12 LAKEHOUSE_ROOT
+#   LAKEHOUSE_ROOT is the repo _lakehouse/, relocated to ext4 - see submission/RUN-LOG.md
+#   directories with more than 12 entries are collapsed to a count
+[ 48M]  /home/khanhtruong/lakehouse-day18
+├── [ 12K]  blobs  [200 entries exceeds filelimit, not opening dir]
+├── [ 16M]  bronze
+│   ├── [ 37K]  agent_traces
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [ 29K]  part-00000-b3a837de-bd6a-4312-a8bc-0ba156a0527d-c000.snappy.parquet
+│   ├── [2.6M]  docs_multimodal
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [2.6M]  part-00000-345ebf6a-0fd0-484b-8f62-aaba6b6a634d-c000.snappy.parquet
+│   └── [ 13M]  llm_calls_raw
+│       ├── [4.0K]  _delta_log
+│       └── [ 13M]  part-00000-0a2bf06c-78a4-4eda-9766-6b03ea49f4ee-c000.snappy.parquet
+├── [ 54K]  gold
+│   ├── [ 10K]  agent_performance
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [2.4K]  part-00000-519a53df-0e64-4097-acd4-7827f75d0ae1-c000.snappy.parquet
+│   └── [ 40K]  llm_daily_metrics
+│       ├── [4.0K]  _delta_log
+│       ├── [4.0K]  date=2026-04-01
+│       ├── [4.0K]  date=2026-04-02
+│       ├── [4.0K]  date=2026-04-03
+│       ├── [4.0K]  date=2026-04-04
+│       ├── [4.0K]  date=2026-04-05
+│       ├── [4.0K]  date=2026-04-06
+│       ├── [4.0K]  date=2026-04-07
+│       └── [4.0K]  date=2026-04-08
+├── [ 88K]  iceberg
+│   ├── [ 28K]  nb5
+│   │   ├── [ 20K]  catalog.db
+│   │   └── [4.0K]  warehouse
+│   ├── [ 28K]  nb6
+│   │   ├── [ 20K]  catalog.db
+│   │   └── [4.0K]  warehouse
+│   └── [ 28K]  nb8
+│       ├── [ 20K]  catalog.db
+│       └── [4.0K]  warehouse
+├── [ 31M]  scratch
+│   ├── [2.0M]  customers_tt
+│   │   ├── [4.0K]  _delta_log
+│   │   ├── [608K]  part-00000-6ef97830-c4ab-445f-8c3c-6eeb95120279-c000.snappy.parquet
+│   │   ├── [867K]  part-00000-aa43b769-6d86-48fe-a527-f7e516ef30a8-c000.snappy.parquet
+│   │   ├── [1.5K]  part-00000-c665b904-7051-4b61-ae24-74bce015a45f-c000.snappy.parquet
+│   │   └── [609K]  part-00000-d833221e-3d6c-4d65-9158-16fd1eac71be-c000.snappy.parquet
+│   ├── [ 32K]  docs_cdf
+│   │   ├── [4.0K]  _change_data
+│   │   ├── [4.0K]  _delta_log
+│   │   ├── [ 13K]  part-00000-9c0cfad0-1ff6-4e6a-b918-3f5bab3fde86-c000.snappy.parquet
+│   │   └── [7.3K]  part-00000-9fa548cc-7c43-44b5-a71f-b2dc4584452b-c000.zstd.parquet
+│   ├── [5.0M]  docs_intable
+│   │   ├── [4.0K]  _delta_log
+│   │   ├── [2.6M]  part-00000-36bca0a1-9bf5-4b55-b18c-c7988ee323d1-c000.snappy.parquet
+│   │   └── [2.4M]  part-00000-7a0242dd-aaba-4604-a4dc-02ac554513fb-c000.zstd.parquet
+│   ├── [2.6M]  emb_f32
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [2.6M]  part-00000-882731c8-7cce-4981-aeff-586af2fc37d2-c000.snappy.parquet
+│   ├── [459K]  emb_int8
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [451K]  part-00000-5a155e64-4056-4893-9aea-77cb8065b9b2-c000.snappy.parquet
+│   ├── [ 40K]  events_smallfiles  [323 entries exceeds filelimit, not opening dir]
+│   ├── [6.2M]  maint_events
+│   │   ├── [ 12K]  _delta_log
+│   │   ├── [651K]  part-00000-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [649K]  part-00001-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [650K]  part-00002-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [648K]  part-00003-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [649K]  part-00004-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [648K]  part-00005-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [648K]  part-00006-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [648K]  part-00007-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   ├── [648K]  part-00008-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   │   └── [499K]  part-00009-1edd8d14-2ee3-4330-a536-8930601f21cb-c000.zstd.parquet
+│   ├── [ 13M]  media_inline
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [ 13M]  part-00000-b446ec29-3595-4679-bedf-5eba7f77401b-c000.snappy.parquet
+│   ├── [ 11K]  media_pointer
+│   │   ├── [4.0K]  _delta_log
+│   │   └── [3.4K]  part-00000-1d6a2820-d2c1-4259-acee-ec4508d792ca-c000.snappy.parquet
+│   ├── [ 11K]  users_delta
+│   │   ├── [4.0K]  _delta_log
+│   │   ├── [1.4K]  part-00000-0876ba6c-efe0-44b4-928d-7aeff60e5f16-c000.snappy.parquet
+│   │   └── [1.5K]  part-00000-bbf82eec-b9e3-4a19-8dd8-8a2943b1faa1-c000.snappy.parquet
+│   └── [2.6M]  vector_index_external
+│       ├── [4.0K]  _delta_log
+│       └── [2.6M]  part-00000-e4584fd2-e799-4666-ab28-40dcc7f7a82d-c000.snappy.parquet
+└── [ 88K]  silver
+    ├── [ 16K]  agent_trajectories
+    │   ├── [4.0K]  _delta_log
+    │   ├── [4.0K]  agent_version=policy-v2
+    │   └── [4.0K]  agent_version=policy-v3
+    ├── [ 40K]  llm_calls
+    │   ├── [4.0K]  _delta_log
+    │   ├── [4.0K]  date=2026-04-01
+    │   ├── [4.0K]  date=2026-04-02
+    │   ├── [4.0K]  date=2026-04-03
+    │   ├── [4.0K]  date=2026-04-04
+    │   ├── [4.0K]  date=2026-04-05
+    │   ├── [4.0K]  date=2026-04-06
+    │   ├── [4.0K]  date=2026-04-07
+    │   └── [4.0K]  date=2026-04-08
+    └── [ 28K]  training_corpus_governed
+        ├── [4.0K]  _delta_log
+        ├── [4.0K]  provenance_bucket=UNCLASSIFIED
+        ├── [4.0K]  provenance_bucket=licensed
+        ├── [4.0K]  provenance_bucket=public_domain
+        ├── [4.0K]  provenance_bucket=scraped_optout_checked
+        └── [4.0K]  provenance_bucket=synthetic
+
+  48M used in 73 directories, 32 files
+
+tree --du -h --filelimit 14 LAKEHOUSE_ROOT/silver/llm_calls   # one Delta table in full
+[ 10M]  /home/khanhtruong/lakehouse-day18/silver/llm_calls
+├── [ 13K]  _delta_log
+│   └── [8.9K]  00000000000000000000.json
+├── [1.0M]  date=2026-04-01
+│   └── [1.0M]  part-00000-791fa147-8a9d-42f6-bc56-1eb664cb3030-c000.snappy.parquet
+├── [1.4M]  date=2026-04-02
+│   └── [1.4M]  part-00000-43fc348b-b2e7-470d-8ede-c11c60050852-c000.snappy.parquet
+├── [1.4M]  date=2026-04-03
+│   └── [1.4M]  part-00000-fa25334c-404d-43c9-a6f1-0e47912f6f60-c000.snappy.parquet
+├── [1.4M]  date=2026-04-04
+│   └── [1.4M]  part-00000-7be226ff-c6e1-450a-8f46-08d720c0c81b-c000.snappy.parquet
+├── [1.4M]  date=2026-04-05
+│   └── [1.4M]  part-00000-289c0ab3-debb-4c6b-a9f5-f76fa77964a6-c000.snappy.parquet
+├── [1.4M]  date=2026-04-06
+│   └── [1.4M]  part-00000-a8b4a0e8-5bed-482d-a55b-bd051c68ead2-c000.snappy.parquet
+├── [1.4M]  date=2026-04-07
+│   └── [1.4M]  part-00000-8e5b06ab-2cb9-43e3-9a9a-bf695c1e3a25-c000.snappy.parquet
+└── [461K]  date=2026-04-08
+    └── [457K]  part-00000-1f4459ee-b693-4b9f-808c-bcb5dbf15d83-c000.snappy.parquet
+
+  10M used in 9 directories, 9 files
+
+tree -L 3 --du -h --filelimit 14 LAKEHOUSE_ROOT/iceberg/nb5/warehouse/lake   # Iceberg three-tier metadata
+[ 60K]  /home/khanhtruong/lakehouse-day18/iceberg/nb5/warehouse/lake
+└── [ 56K]  llm_events
+    ├── [ 48K]  data
+    │   ├── [4.0K]  ts_day=2026-08-01
+    │   ├── [4.0K]  ts_day=2026-08-02
+    │   ├── [4.0K]  ts_day=2026-08-03
+    │   ├── [4.0K]  ts_day=2026-08-04
+    │   ├── [4.0K]  ts_day=2026-08-05
+    │   ├── [4.0K]  ts_day=2026-08-06
+    │   ├── [4.0K]  ts_day=2026-08-07
+    │   ├── [4.0K]  ts_day=2026-08-08
+    │   ├── [4.0K]  ts_day=2026-08-09
+    │   ├── [4.0K]  ts_day=2026-08-10
+    │   └── [4.0K]  ts_day=2026-08-11
+    └── [4.0K]  metadata  [38 entries exceeds filelimit, not opening dir]
+
+  60K used in 14 directories, 0 files

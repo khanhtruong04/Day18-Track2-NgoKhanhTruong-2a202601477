@@ -1,0 +1,48 @@
+# Day 18 Lakehouse Lab — lightweight path, full gate
+# host: WSL2 Ubuntu 22.04 on Windows 11 · 2026-08-18T04:44:50Z
+# python: Python 3.10.12 · LAKEHOUSE_ROOT=/home/khanhtruong/lakehouse-day18 (ext4)
+# deltalake 1.6.2 · pyiceberg 0.11.1 · duckdb 1.5.5 · polars 1.43.2 · pyarrow 25.0.1
+
+$ make smoke
+Lakehouse smoke test — lightweight path (offline)
+
+  ✓ delta write + read
+  ✓ delta time travel + history
+  ✓ delta maintenance (compact / vacuum) — NB6
+  ✓ delta change data feed — NB7
+  ✓ iceberg catalog + append
+  ✓ iceberg scan planning prunes 5 → 1 files
+  ✓ iceberg maintenance API present — NB6
+  ✓ duckdb vector search (core, offline)
+  ✓ duckdb ↔ delta via arrow (no extension download)
+
+All checks passed — the lab is ready. Run `make data && make lab`.
+
+$ make test
+........................                                                 [100%]
+
+$ make data
+Wrote 200,000 rows → /home/khanhtruong/lakehouse-day18/bronze/llm_calls_raw
+  unique request_ids: 190,052  (9,948 duplicates seeded for dedup demo)
+  date span: 7 UTC days from 2026-04-01
+
+$ make data-ai
+docs      2,000 rows, dim=256  → /home/khanhtruong/lakehouse-day18/bronze/docs_multimodal
+blobs     200 files, 12.5 MB  → /home/khanhtruong/lakehouse-day18/blobs
+traces    1,578 steps / 300 sessions → /home/khanhtruong/lakehouse-day18/bronze/agent_traces
+
+Ready for NB7 (multimodal + vectors) and NB8 (agents + provenance).
+
+$ make run-all
+Running 8 notebooks with /mnt/c/Python/AI_Thuc_Chien/Day18-Track2-NgoKhanhTruong-2a202601477/.venv/bin/python
+
+  PASS  01_delta_basics.py                  6.9s
+  PASS  02_optimize_zorder.py              15.5s
+  PASS  03_time_travel.py                   7.1s
+  PASS  04_medallion.py                     8.0s
+  PASS  05_iceberg_catalog.py               8.7s
+  PASS  06_maintenance.py                  18.0s
+  PASS  07_vectors_multimodal.py            5.0s
+  PASS  08_agents_provenance.py            12.2s
+
+8/8 passed in 81.3s
